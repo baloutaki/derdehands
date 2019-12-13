@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <!--  Needed for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>students</title>
+    <!--  Stylesheets -->
+    <link rel="stylesheet" href="https://yarnpkg.com/en/package/normalize.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- bootstrap flavor of datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <!-- needed scripts, both bootstrap & datatables are using jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <h1>About content</h1>
+
+</head>
+<body>
+<nav th:replace="~{menu::nav_menu(new)}"></nav>
+<div class="fluid-container">
+    <form th:action="@{~/new}" method="post" th:object="${nProduct}">
+        <div class="form-group">
+            <label for="email" class="input-group-text">Email</label>
+            <input type="email" id="email" class="form-control" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="userName" class="input-group-text">Gebruikersnaam</label>
+            <input type="text" id="userName" class="form-control" th:field="*{userName}">
+            <span th:if="${#fields.hasErrors('userName')}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="productNaam" class="input-group-text">Productnaam</label>
+            <input type="text" id="productNaam" class="form-control" th:field="*{productNaam}">
+            <span th:if="${#fields.hasErrors('productNaam')}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="omschrijving" class="input-group-text">Omschrijving</label>
+            <input type="text" id="omschrijving" class="form-control" th:field="*{omschrijving}">
+            <span th:if="${#fields.hasErrors('omschrijving')}" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="prijs" class="input-group-text">Prijs</label>
+            <input type="text" id="prijs" class="form-control" th:field="*{prijs}">
+            <span th:if="${#fields.hasErrors('prijs')}" class="error"></span>
+        </div>
+        <div id="sub-knop">
+            <input type="submit" class="btn btn-primary btn-lg btn-block"></input>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

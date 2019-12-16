@@ -32,7 +32,6 @@ public class NewController {
     public String saveProduct(@ModelAttribute("nProduct") @Valid Data nProduct, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "new";
-
         dao.save(nProduct);
         return "redirect:/index";
     }

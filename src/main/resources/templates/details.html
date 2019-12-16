@@ -14,7 +14,7 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- bootstrap flavor of datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/CSS/main.css}">
     <!-- needed scripts, both bootstrap & datatables are using jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -29,9 +29,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 </head>
-<body>
-<nav th:replace="~{menu::nav_menu(details)}"></nav>
-<div id="content" class="container">
+<form>
     <table cellspacing="0" th:object="${data}">
         <tr>
             <td>Productnaam</td>
@@ -47,7 +45,7 @@
         </tr>
         <p>Email: <a href="mailto:amin@gmail.com">amin@gmail.com</a></p>
     </table>
-</div>
+</form>
 
 </body>
 </html>

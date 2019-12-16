@@ -5,6 +5,7 @@ import be.ehb.derdehands.model.DataDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,9 +20,13 @@ public class DetailsController {
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String showDetailsForID(ModelMap map, @PathVariable(value = "id") int id) {
         Optional<Data> optional = dao.findById(id);
+        map.addAttribute("data", optional.get());
+
             return "details";
         }
-    }
+
+
+}
 
 
 

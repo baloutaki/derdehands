@@ -18,7 +18,7 @@ public class IndexController {
 @Autowired
     DataDAO dao;
 
-    @ModelAttribute(value = "allePruducts")
+    @ModelAttribute(value = "alleProducts")
     public Iterable<Data>getAllProducts(){
         return dao.findAll();
     }
@@ -26,6 +26,11 @@ public class IndexController {
     @RequestMapping(value = {"/index","/"},method = RequestMethod.GET)
     public String showIndex(ModelMap map){
         return "index";
+    }
+
+    @RequestMapping(value = {"/about"},method = RequestMethod.GET)
+    public String showIndexAbout(ModelMap map){
+        return "about";
     }
 
 

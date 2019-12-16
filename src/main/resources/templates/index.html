@@ -14,7 +14,7 @@
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- bootstrap flavor of datatables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/CCS/main.css}">
     <!-- needed scripts, both bootstrap & datatables are using jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -29,17 +29,18 @@
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 
 
-    <h1>About content</h1>
+    <h1>Derde Hands</h1>
 
     <!-- datatable setup, pick and choose options-->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#products_table').DataTable({
-                "paging":false,
-                "info":false,
-                "lengthChange":false,
-                "searching":true,
-                "ordering":false
+                "paging": false,
+                "info": false,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": false,
+                "pagingtype": "full_numbers",
             });
         });
     </script>
@@ -47,30 +48,32 @@
 <body>
 <nav th:replace="~{menu::nav_menu(index)}"></nav>
 <div id="content" class="container">
-<div id="products" th:unless="${allePruducts.isEmpty()}">
-    <h1>Products</h1>
-    <table id="products_table" class="table">
-        <thead>
-        <tr>
-            <th>ProductNaam</th>
-            <th>Prijs</th>
-            <th>Details</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="data: ${allePruducts}" >
-            <td><span th:text="${data.productNaam}"></span></td>
-            <td><span th:text="${data.prijs}" ></span></td>
-            <td><a class="btn" href="">Details</a></td>
+    <div id="products" th:unless="${alleProducts.isEmpty()}">
+        <h1>Products</h1>
+        <table id="products_table" class="table">
+            <thead>
+            <tr>
+                <th>ProductNaam</th>
+                <th>Prijs</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data: ${alleProducts}">
+                <td><span th:text="${data.productNaam}"></span></td>
+                <td><span th:text="${data.prijs}"></span></td>
+                <td><a class="btn" th:href="@{/details/{id}(id=${data.id})}">Details</a></td>
 
-        </tr>
-        </tbody>
-    </table>
-</div>
-    <div  th:if="${allePruducts.isEmpty()}">
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${alleProducts.isEmpty()}">
         <h3>Geen Producten ingegeven, gelieve producten ingeven.</h3>
     </div>
 </div>
+<div id="btn">
 <a th:href="@{/new}" class="btn btn-primary">Voeg Toe</a>
+</div>
 </body>
 </html>

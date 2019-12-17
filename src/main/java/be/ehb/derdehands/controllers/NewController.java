@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Controller
 public class NewController {
-
+/*controller*/
     @Autowired
     DataDAO dao;
 
